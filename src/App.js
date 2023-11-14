@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <h1>HOLA</h1>
+      <h2>CHAO</h2>
       {/* <Navbar />
       <Carousel />
       <Cards />
