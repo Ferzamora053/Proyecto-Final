@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 function App() {
   return (
     <div className="App">
+      <h1>HOLA</h1>
       <Navbar />
       <Carousel />
       <Cards />
