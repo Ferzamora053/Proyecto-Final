@@ -1,0 +1,15 @@
+/* footer.css */
+
+.footer-style {
+    background-color: #032541;
+    color: #fff;
+    font-size: 18px; /* Ajusta el tamaño del texto según tus preferencias */
+    padding: 20px 0; /* Añade espacio alrededor del contenido del footer */
+    margin-top: 20px; /* Ajusta el margen superior según tus necesidades */
+  }
+  
+  /* Estilos para el texto si es necesario */
+  .footer-style p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo dentro del footer */
+  }
+  
