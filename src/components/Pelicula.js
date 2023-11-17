@@ -15,8 +15,8 @@ function Pelicula({ imageSource, title, text, date, url }) {
         <div className="overflow">
           <img src={imageSource} alt="a wallpaper" className="card-img-top" />
         </div>
-        <div className="card-body text-light">
-          <h4 className="card-title">{title}</h4>
+        <div className="card-body text-light p-1">
+          <h5 className="card-title">{title}</h5>
           <p className="card-text text-light d-none d-lg-block">{text}</p>
           <p className='card-text text-light'>Fecha de estreno: {date}</p>
           <a
