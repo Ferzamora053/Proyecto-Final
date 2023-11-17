@@ -27,7 +27,7 @@ function Navbar() {
               <Link to="contacto">Contacto</Link>
             </a>
             <a className="nav-link text-white">
-              <Link to="infoequipo">Información del Equipo</Link>
+              Información del Equipo
             </a>
        
           </div>
