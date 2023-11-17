@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 const Layout = () => {
-    retrun (
+    return (
         <>
         <div>
             <Navbar />
