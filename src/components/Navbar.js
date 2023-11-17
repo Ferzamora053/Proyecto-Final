@@ -1,13 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../CSS/navbar.css";
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-custom">
       <div className="container-fluid">
-        <a className="navbar-brand text-white" href="#">
-          CINEWEB
-        </a>
+        <li><Link to="/">CINEWEB</Link> </li>
         <button
           className="navbar-toggler"
           type="button"
