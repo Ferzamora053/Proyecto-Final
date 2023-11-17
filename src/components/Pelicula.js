@@ -18,7 +18,7 @@ function Pelicula({ imageSource, title, text, date, url }) {
         <div className="card-body text-light">
           <h4 className="card-title">{title}</h4>
           <p className="card-text text-light d-none d-lg-block">{text}</p>
-          <p className='card-text text-light'>{date}</p>
+          <p className='card-text text-light'>Fecha de estreno: {date}</p>
           <a
             href={url}
             className="btn btn-outline-secondary rounded-0"
