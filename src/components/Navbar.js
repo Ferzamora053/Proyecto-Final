@@ -1,12 +1,12 @@
 import React from "react";
-import "./navbar.css";
+import "../CSS/navbar.css";
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-custom">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Navbar
+        <a className="navbar-brand text-white" href="#">
+          CINEWEB
         </a>
         <button
           className="navbar-toggler"
@@ -21,18 +21,16 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-link active" aria-current="page" href="#">
+            <a className="nav-link active text-white" aria-current="page" href="#">
               Home
             </a>
-            <a className="nav-link" href="#">
-              Features
+            <a className="nav-link text-white" href="#">
+              Contacto
             </a>
-            <a className="nav-link" href="#">
-              Pricing
+            <a className="nav-link text-white" href="#">
+              Informacion
             </a>
-            <a className="nav-link disabled" aria-disabled="true">
-              Disabled
-            </a>
+       
           </div>
         </div>
       </div>

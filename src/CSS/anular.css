@@ -1,0 +1,41 @@
+.reset-card-styles .card,
+.reset-card-styles .card-body,
+.reset-card-styles .card-img-top {
+  position: static;
+  overflow: visible;
+  transition: none;
+}
+
+.reset-card-styles .card:hover {
+  transform: none;
+}
+
+.reset-card-styles .card-body {
+  position: static;
+  top: auto;
+  left: auto;
+  width: auto;
+  height: auto;
+  background: none;
+  padding: 0;
+  box-sizing: content-box;
+  opacity: 1;
+  display: block;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  transition: none;
+}
+
+.reset-card-styles .card:hover .card-body {
+  opacity: 1;
+}
+
+.reset-card-styles .card-img-top {
+  width: auto;
+  height: auto;
+}
+
+.reset-card-styles .accordion-button button {
+  margin-right: 10px; /* Puedes ajustar este valor según tus preferencias */
+}
