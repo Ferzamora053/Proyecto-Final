@@ -16,10 +16,10 @@ function Pelicula({ imageSource, title, url }) {
           <img src={imageSource} alt="a wallpaper" className="card-img-top" />
         </div>
         <div className="card-body text-light p-2">
-          <h4 className="card-title h4-lg">{title}</h4>
+          <h4 className="card-title h4-lg mb-2">{title}</h4>
           <a
             href={url}
-            className="btn btn-outline-secondary rounded-0"
+            className="btn btn-outline-secondary rounded-0 mt-2"
             target="_blank"
             rel="noopener noreferrer"
           >
