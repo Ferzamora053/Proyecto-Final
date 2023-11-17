@@ -23,7 +23,7 @@ function Peliculas() {
           <h2 className="text-center">Cartelera</h2>
         </div>
         {peliculas.map((pelicula) => (
-          <div className="col-lg-3 mb-2 mt-4" key={pelicula.id}> 
+          <div className="col-md-3 mb-2 mt-4" key={pelicula.id}> 
             <Pelicula imageSource={'https://www.themoviedb.org/t/p/w440_and_h660_face' + pelicula.poster_path} title={pelicula.title} text={pelicula.overview} date={pelicula.release_date}/>
           </div>
         ))}
