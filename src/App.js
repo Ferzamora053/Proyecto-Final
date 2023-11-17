@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import HomePage from "./pages/HomePage";
-import InfoPelicula from "./pages/InfoPelicula";
+import InfoPelicula from "./pages/Infopelicula";
 import CompraEntrada from "./pages/CompraEntrada";
 import InfoEquipo from "./pages/InfoEquipo";
 import Contacto from "./pages/Contacto";
