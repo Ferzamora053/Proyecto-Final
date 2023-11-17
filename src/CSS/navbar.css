@@ -3,3 +3,15 @@
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(35,97,146,1) 100%, rgba(0,212,255,1) 100%);
 }
 
+.NPag {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}

@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-custom">
       <div className="container-fluid">
-        <a><Link to="/">CINEWEB</Link> </a>
+        <a class="NPag"><Link to="/">CINEWEB</Link> </a>
         <button
           className="navbar-toggler"
           type="button"
