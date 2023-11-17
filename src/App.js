@@ -17,6 +17,8 @@ function App() {
   const youtubeVideoUrl = 'https://www.youtube.com/watch?v=WGIK4p-FJ_M';
   return (
     <div className="App">
+      <h1>HOLA</h1>
+      <h2>CHAO</h2>
       <Navbar />
       <Carousel />
       <div className="container">
