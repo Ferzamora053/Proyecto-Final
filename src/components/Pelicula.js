@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../CSS/pelicula.css";
 
-function Pelicula({ imageSource, title, text, date, url }) {
+function Pelicula({ imageSource, title, url }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -17,15 +17,13 @@ function Pelicula({ imageSource, title, text, date, url }) {
         </div>
         <div className="card-body text-light p-2">
           <h4 className="card-title h4-lg">{title}</h4>
-          <p className="card-text text-light d-none d-lg-block">{text}</p>
-          <p className='card-text text-light'>Fecha de estreno: {date}</p>
           <a
             href={url}
             className="btn btn-outline-secondary rounded-0"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Visitar
+            Ver horarios
           </a>
         </div>
       </div>

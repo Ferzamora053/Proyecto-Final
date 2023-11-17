@@ -26,11 +26,6 @@
   text-overflow: ellipsis;
 }
 
-.card-body p {
-  display: -webkit-box;
-  -webkit-line-clamp: 7;
-}
-
 .card:hover .card-body {
   opacity: 1;
 }
