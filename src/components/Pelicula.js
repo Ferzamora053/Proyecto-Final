@@ -25,7 +25,7 @@ function Pelicula({ imageSource, title, text, date, url }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Go to this page
+            Visitar
           </a>
         </div>
       </div>
