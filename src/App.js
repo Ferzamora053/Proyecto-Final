@@ -10,7 +10,6 @@ import Contacto from "./pages/Contacto";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function App() {
-  const youtubeVideoUrl = 'https://www.youtube.com/watch?v=WGIK4p-FJ_M';
   return (
     <BrowserRouter>
       <Routes>

@@ -1,8 +1,16 @@
 import React from "react";
+import Video from "../components/Video";
+import Info from "../components/Info";
+import Butacahora from "../components/Butacahora";
 
 function InfoPelicula () {
+    const youtubeVideoUrl = 'https://www.youtube.com/watch?v=WGIK4p-FJ_M';
     return (
-        <h1>hOLa</h1>
+        <div>
+            <Video videoUrl={youtubeVideoUrl} />
+            <Info />
+            <Butacahora />  
+        </div>      
     );
 }
 
