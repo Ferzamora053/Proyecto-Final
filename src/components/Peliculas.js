@@ -17,62 +17,62 @@ const peliculas = [
     title: "El asesino",
     image: image1,
     url: "#",
-    text: "Descripcion de la imagen"
+    text: ""
   },
   {
     id: 2,
-    title: "Fazt Blog",
+    title: "Oppenheimer",
     image: image2,
     url: "#",
-    text: "Descripcion de la imagen"
+    text: ""
 
   },
   {
     id: 3,
-    title: "Fazt Youtube",
+    title: "The Marvels",
     image: image3,
     url: "#",
-    text: "Descripcion de la imagen"
+    text: ""
 
   },
   {
     id: 4,
-    title: "Fazt Youtube",
+    title: "Loki",
     image: image4,
     url: "#",
-    text: "Descripcion de la imagen"
+    text: ""
 
   },
   {
     id: 5,
-    title: "Fazt Youtube",
+    title: "Ataque de los Titanes",
     image: image5,
     url: "#",
-    text: "Descripcion de la imagen"
+    text: ""
 
   },
   {
     id: 6,
-    title: "Fazt Youtube",
+    title: "Five Nights at Freddy's",
     image: image6,
-    url: "#",
-    text: "Descripcion de la imagen"
+    url: "infopeli",
+    text: ""
 
   },
   {
     id: 7,
-    title: "Fazt Youtube",
+    title: "The Creator",
     image: image7,
     url: "#",
-    text: "Descripcion de la imagen"
+    text: ""
 
   },
   {
     id: 8,
-    title: "Fazt Youtube",
+    title: "John Wick 4",
     image: image8,
     url: "#",
-    text: "Descripcion de la imagen"
+    text: ""
 
   },
 ];
