@@ -1,5 +1,5 @@
 import "./App.css";
-import {BrowerRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import HomePage from "./pages/HomePage";
 
@@ -18,13 +18,13 @@ import Butacahora from "./components/Butacahora";
 function App() {
   const youtubeVideoUrl = 'https://www.youtube.com/watch?v=WGIK4p-FJ_M';
   return (
-    <BrowerRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
         </Route>
       </Routes>
-    </BrowerRouter>
+    </BrowserRouter>
   );
 }
 
