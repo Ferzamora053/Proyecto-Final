@@ -1,5 +1,7 @@
 import React from "react";
 import "../CSS/butacahora.css";
+import "../CSS/anular.css"
+
 function Butacahora() {
     return (
         <div className="container reset-card-styles">

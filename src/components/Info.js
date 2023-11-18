@@ -1,5 +1,6 @@
 import React from "react";
 import "../CSS/info.css"
+import "../CSS/anular.css"
 import image6 from '../images/image6.jpg'
 
 function Info() {
