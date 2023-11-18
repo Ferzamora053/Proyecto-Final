@@ -10,6 +10,8 @@ function HomePage() {
             <div className="container">
                 <Peliculas />
             </div>
+            <h1><Link to="infopeli">INFO PELi</Link></h1>
+            <h1><Link to="compraentrada">Comprar entrada</Link></h1>
         </div>
     )
 }
