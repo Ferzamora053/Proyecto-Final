@@ -6,3 +6,7 @@
 .navbar .navbar-brand, .navbar .navbar-nav .nav-link {
     color: white;
 }
+
+.navbar-brand:hover {
+    color: #00d5ffbe;
+}

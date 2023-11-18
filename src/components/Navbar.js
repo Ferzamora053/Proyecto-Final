@@ -9,7 +9,7 @@ function NavbarC() {
   return (
     <Navbar expand="lg" className="bg-custom">
       <Container fluid>
-        <Navbar.Brand as={Link} to="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Cine Web</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic.navbar-nav">
           <Nav className="me-auto">
