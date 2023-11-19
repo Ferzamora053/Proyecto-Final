@@ -7,10 +7,10 @@ function HomePage() {
     return (
         <div>
             <Carousel />
-            <div className="container">
+            <div className="container-lg px-4">
                 <Peliculas />
             </div>
-            <h1><Link to="infopeli">INFO PELi</Link></h1>
+            <h1><Link to="infopeli">Información Película</Link></h1>
             <h1><Link to="compraentrada">Comprar entrada</Link></h1>
         </div>
     )

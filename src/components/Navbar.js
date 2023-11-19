@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function NavbarC() {
   return (
-    <Navbar expand="lg" className="bg-custom">
+    <Navbar expand="lg" className="bg-custom navbar-custom">
       <Container fluid>
         <Navbar.Brand as={Link} to="/">Cine Web</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
