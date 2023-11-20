@@ -81,7 +81,7 @@ function ItemAcordion ({ id, tipoPantalla, subtitulos, tipoButacas }) {
 
 function Acordion ({items}) {
     return (
-        <div className="accordion" id="accordionExample">
+        <div className="accordion mb-4" id="accordionExample">
             {items.map((item, index) => (
                 <ItemAcordion key={index} {...item} />
             ))}
