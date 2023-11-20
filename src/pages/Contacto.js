@@ -2,14 +2,37 @@ import React from "react";
 import "../CSS/contacto.css";
 import '../CSS/anular.css';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
+import { Container, Card, Form, Row, Col, Button } from 'react-bootstrap';
 
-function Contacto() {
+const InfoCard = ({ title, text }) => {
+    return (
+      <Card border="primary" style={{ display: 'flex', flexDirection: 'row', width: '30rem', margin: 20 }}>
+        <div style={{ flex: 2, padding: '1rem' }}>
+          <Card.Body>
+            <Card.Title style={{ color: "#00008B"}} className="fw-bold">{title}</Card.Title>
+            <Card.Text>{text}</Card.Text>
+          </Card.Body>
+        </div>
+      </Card>
+    );
+};
+
+const Contacto = () => {
+    const cardData = [
+      {
+        title: 'Nuestra Historia del Cine:',
+        text: 'Sumérgete con nosotros en un viaje a través de las eras cinematográficas. Desde los primeros destellos de imágenes en blanco y negro hasta las producciones de vanguardia de la actualidad, nuestra página web está dedicada a exponer la rica y fascinante historia del cine. Descubre cómo esta forma de arte ha evolucionado, inspirado y conectado a personas de todo el mundo logrando un sin fin de nuevas personas que llegan a este mundo.',
+      },
+      {
+        title: 'Misión:',
+        text: 'En el corazón de nuestra misión se encuentra el deseo de brindar experiencias cinematográficas excepcionales que perduren en la memoria de nuestros visitantes. Nos esforzamos por ofrecer una cuidadosa selección de películas que no solo entretengan, sino que también provoquen reflexión y emoción. Queremos ser el destino preferido de los amantes del cine, donde cada visita se traduzca en momentos inolvidables.',
+      },
+      {
+        title: 'Visión:',
+        text: 'Imaginamos un futuro donde la magia del cine continúe siendo una fuente inagotable de inspiración y entretenimiento. Nuestra visión es crear un espacio donde la diversidad de voces y perspectivas en el cine se celebre y donde cada usuario se sienta parte de una comunidad apasionada. Buscamos ir más allá de ser simplemente un cine; aspiramos a ser un hogar para aquellos que comparten nuestra devoción por las historias bien contadas.',
+      },
+    ];
+
 
   return (
     <Container fluid className="reset-card-styles">
@@ -38,45 +61,9 @@ function Contacto() {
             </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
-            <Card border="primary" style={{ display: 'flex', flexDirection: 'row', width: '30rem', margin: 20 }}>
-            <div style={{ flex: 2, padding: '1rem' }}>
-            <Card.Body>
-                <Card.Title style={{ color: "#00008B"}} className="fw-bold">Nuestra Historia del Cine:</Card.Title>
-                <Card.Text>
-                Sumérgete con nosotros en un viaje a través de las eras cinematográficas. 
-                Desde los primeros destellos de imágenes en blanco y negro hasta las producciones de vanguardia de la actualidad, 
-                nuestra página web está dedicada a exponer la rica y fascinante historia del cine. Descubre cómo esta forma de arte ha evolucionado, 
-                inspirado y conectado a personas de todo el mundo logrando un sin fin de nuevas personas que llegan a este mundo.
-                </Card.Text>
-            </Card.Body>
-            </div>
-            </Card>
-            <Card border="primary" style={{ display: 'flex', flexDirection: 'row', width: '30rem', margin: 20 }}>
-            <div style={{ flex: 2, padding: '1rem' }}>
-            <Card.Body>
-                <Card.Title style={{ color: "#00008B"}} className="fw-bold" >Misión:</Card.Title>
-                <Card.Text>
-                En el corazón de nuestra misión se encuentra el deseo de brindar experiencias cinematográficas excepcionales 
-                que perduren en la memoria de nuestros visitantes. Nos esforzamos por ofrecer una cuidadosa selección de películas
-                 que no solo entretengan, sino que también provoquen reflexión y emoción. Queremos ser el destino preferido de los amantes del cine, 
-                 donde cada visita se traduzca en momentos inolvidables.
-                </Card.Text>
-            </Card.Body>
-            </div>
-            </Card>
-            <Card border="primary" style={{ display: 'flex', flexDirection: 'row', width: '30rem', margin: 20 }}>
-            <div style={{ flex: 2, padding: '1rem' }}>
-            <Card.Body>
-                <Card.Title style={{ color: "#00008B"}} className="fw-bold">Visión:</Card.Title>
-                <Card.Text>
-                Imaginamos un futuro donde la magia del cine continúe siendo una fuente inagotable de inspiración y entretenimiento. 
-                Nuestra visión es crear un espacio donde la diversidad de voces y perspectivas en el cine se celebre y donde cada usuario 
-                se sienta parte de una comunidad apasionada. Buscamos ir más allá de ser simplemente un cine; aspiramos a ser un hogar para aquellos 
-                que comparten nuestra devoción por las historias bien contadas.
-                </Card.Text>
-            </Card.Body>
-            </div>
-            </Card>
+            {cardData.map((data, index) => (
+            <InfoCard key={index} {...data} />
+          ))}
         </div>
 
         <p className="text-center">Si quieres saber más de nosotros, contactanos...</p>

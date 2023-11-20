@@ -12,4 +12,14 @@
 .footer-style p {
   margin: 0; /* Elimina el margen predeterminado del párrafo dentro del footer */
 }
+
+.footer-style .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-style .col-md-6 {
+  flex: 0 0 50%; 
+}
   
