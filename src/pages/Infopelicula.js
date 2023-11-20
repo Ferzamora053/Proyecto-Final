@@ -8,21 +8,35 @@ import axios from "axios";
 function InfoPelicula () {
     const { id } = useParams();
     const [DataPelicula, setDataPelicula] = useState(null);
+    const [OmdbData, setOmbdData] = useState(null);
 
     useEffect(() => {
         const apiKey = "c89fe48f27367d1ff270bdf4c51518ed";
-        const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
+        const omdbApiKey = "f7eea519";
 
-        axios.get(apiUrl)
-        .then((response) => {
-            setDataPelicula(response.data);
+        const tmbdApiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
+
+        axios.get(tmbdApiUrl)
+        .then(async (response) => {
+            const peliculas = response.data;
+            setDataPelicula(peliculas);
+
+            const omdbApiUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${encodeURIComponent(peliculas.title)}`;
+
+            try {
+                const omdbResponse = await axios.get(omdbApiUrl);
+                setOmbdData(omdbResponse.data);
+            } catch (error) {
+                console.log("Error al capturar los datos de OMDB:", error);
+            }
         })
         .catch((error) => {
-            console.log("Error al capturar los datos:", error);
+            console.log("Error al capturar los datos de TMDB:", error);
         });
+
     }, [id]);
 
-    if (!DataPelicula) {
+    if (!DataPelicula || !OmdbData) {
         return <div>Cargando...</div>;
     }
 
@@ -35,7 +49,8 @@ function InfoPelicula () {
         image: 'https://www.themoviedb.org/t/p/w440_and_h660_face' + DataPelicula.poster_path,
         sinopsis: DataPelicula.overview,
         lenguajeOriginal: DataPelicula.original_language,
-    };
+        omdbData: OmdbData, // Include OMDB data in the object
+      };
     
     return (
         <div>
