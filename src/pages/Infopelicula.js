@@ -18,10 +18,10 @@ function InfoPelicula () {
 
         axios.get(tmbdApiUrl)
         .then(async (response) => {
-            const peliculas = response.data;
-            setDataPelicula(peliculas);
+            const detallesPeliculas = response.data;
+            setDataPelicula(detallesPeliculas);
 
-            const omdbApiUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${encodeURIComponent(peliculas.title)}`;
+            const omdbApiUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${encodeURIComponent(detallesPeliculas.title)}`;
 
             try {
                 const omdbResponse = await axios.get(omdbApiUrl);
@@ -40,16 +40,18 @@ function InfoPelicula () {
         return <div>Cargando...</div>;
     }
 
-    const genres = DataPelicula.genres && DataPelicula.genres.length > 0 ? DataPelicula.genres.map(genre => genre.name).join(', ') : 'Genre not available';
+    const genres = DataPelicula ? DataPelicula.genres.map(genre => genre.name).join(', ') : OmdbData.Genre || 'Genre not available';
 
     const dataPelicula = {
-        titulo: DataPelicula.title,
+        titulo: DataPelicula ? DataPelicula.title : OmdbData.Title,
         genero: genres,
-        agerating: DataPelicula.adult ? '18+' : 'Todo público',
+        duracion: DataPelicula.runtime + ' min',
+        agerating: OmdbData && OmdbData.Rated ? OmdbData.Rated : (DataPelicula ? (DataPelicula.adult ? '18+' : 'Todo público') : 'Clasificación de edad no disponible'),
         image: 'https://www.themoviedb.org/t/p/w440_and_h660_face' + DataPelicula.poster_path,
-        sinopsis: DataPelicula.overview,
-        lenguajeOriginal: DataPelicula.original_language,
-        omdbData: OmdbData, // Include OMDB data in the object
+        sinopsis: DataPelicula ? DataPelicula.overview : OmdbData.Plot || 'Sinopsis no disponible',
+        lenguajeOriginal: OmdbData ? OmdbData.Language : 'Lenguaje original no disponible',
+        calificacion: OmdbData ? OmdbData.imdbRating : 'Calificación no disponible',
+        fechaEstreno: DataPelicula.release_date,
       };
     
     return (

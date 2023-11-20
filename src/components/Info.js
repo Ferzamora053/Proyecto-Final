@@ -2,7 +2,14 @@ import React from "react";
 import "../CSS/info.css";
 import "../CSS/anular.css";
 
-function Info({ data }) { 
+function Info({ data }) {
+
+  const isMDBData = Boolean(data && data.titulo);
+  const dataPelicula = isMDBData ? data : data.omdbData;
+
+  const ifCalificacion = dataPelicula.calificacion || "Calificación no disponible";
+  const ifLenguajeOriginal = dataPelicula.lenguajeOriginal || "Lenguaje original no disponible";
+
   return (
     <div className="container-lg reset-card-styles">
       <h1><p className="text-start fw-bold mt-3">{data.titulo}</p></h1>
@@ -17,9 +24,16 @@ function Info({ data }) {
               <div className="col-md-8">
                 <div className="card-body text-star mb-3 mr-3">
                   <h5 className="card-title fw-bold">Sinopsis</h5>
-                  <p className="card-text">{data.sinopsis}</p>
+                  <p className="card-text justificar-parrafo">{data.sinopsis}</p>
                   <h5 className="card-title fw-bold">Idioma original</h5>
-                  <p className="card-text">{data.lenguajeOriginal}</p>
+                  <p className="card-text justificar-parrafo">{ifLenguajeOriginal}</p>
+                  <h5 className="card-title fw-bold">Calificación</h5>
+                  <p className="card-text justificar-parrafo">
+                    {ifCalificacion} 
+                    {dataPelicula.calificacion ? " / 10" : ""}  
+                  </p>
+                  <h5 className="card-title fw-bold">Fecha de estreno</h5>
+                  <p className="card-text justificar-parrafo">{data.fechaEstreno}</p>
                 </div>
               </div>
             </div>
