@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/info.css";
+import "../CSS/justificar-parrafo.css"
 import "../CSS/anular.css";
 
 function Info({ data }) {
