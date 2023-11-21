@@ -1,16 +1,17 @@
 import React from "react";
 import "../CSS/contacto.css";
 import '../CSS/anular.css';
+import "../CSS/justificar-parrafo.css";
 
-import { Container, Card, Form, Row, Col, Button } from 'react-bootstrap';
+import { Container, Card, Form, Row, Col, Button, CardGroup } from 'react-bootstrap';
 
 const InfoCard = ({ title, text }) => {
     return (
-      <Card border="primary" style={{ display: 'flex', flexDirection: 'row', width: '30rem', margin: 20 }}>
+      <Card border="primary" className="my-3 mx-1 rounded border-start">
         <div style={{ flex: 2, padding: '1rem' }}>
           <Card.Body>
-            <Card.Title style={{ color: "#00008B"}} className="fw-bold">{title}</Card.Title>
-            <Card.Text>{text}</Card.Text>
+            <Card.Title style={{ color: "#00008B"}} className="fw-bold text-center">{title}</Card.Title>
+            <Card.Text className="justificar-parrafo">{text}</Card.Text>
           </Card.Body>
         </div>
       </Card>
@@ -33,16 +34,15 @@ const Contacto = () => {
       },
     ];
 
-
   return (
-    <Container fluid className="reset-card-styles">
+    <Container className="reset-card-styles">
         <h1><p className="text-center fw-bold mt-2">CineWeb</p></h1>
-        <p className="text-center">¡Bienvenidos a nuestra página web de cine, el lugar donde la magia del séptimo 
+        <p className="text-center mb-4">¡Bienvenidos a nuestra página web de cine, el lugar donde la magia del séptimo 
         arte cobra vida! Aquí, nos enorgullece presentarles no solo una selección excepcional de películas, 
         sino también una experiencia digital diseñada con pasión y dedicación.</p>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+        <Container className="mx-0">
             <div className="row">
-                <div className=" col-sm-5 col-md-5" style={{ margin: "auto" }}>
+                <div className=" col-lg-12 col-xxl-5 m-auto">
                     <h4 style={{ color: "#00008B"}} className="fw-bold">Valores:</h4>
                     <ul>
                         <li>En nuestra página web, nos guiamos por valores fundamentales que creemos son esenciales para crear una experiencia auténtica y enriquecedora:</li>
@@ -51,26 +51,29 @@ const Contacto = () => {
                         <li>Calidad y Excelencia: Nos esforzamos por ofrecer la más alta calidad en todo lo que hacemos, desde la selección de películas hasta la experiencia digital que ofrecemos a nuestros usuarios.</li>
                     </ul>
                 </div>
-                <div className=" col-sm-5 col-md-5">
+                <div className="col-xxl-5 mr-3">
                 <img
-                src="https://img.freepik.com/foto-gratis/vista-elementos-cine-3d_23-2150720822.jpg?size=626&ext=jpg&ga=GA1.1.1880011253.1700438400&semt=sph"
-                alt="Elementos de cine"
-                style={{ maxWidth: '100%', height: 'auto' }} // Estilo para hacer la imagen responsiva
+                  src="https://img.freepik.com/foto-gratis/vista-elementos-cine-3d_23-2150720822.jpg?size=626&ext=jpg&ga=GA1.1.1880011253.1700438400&semt=sph"
+                  alt="Elementos de cine"
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                  className="mx-auto d-block d-none d-xxl-block"
                 />
                 </div>
             </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+        </Container>
+        <Container>
+          <CardGroup className="flex-column flex-lg-row">
             {cardData.map((data, index) => (
-            <InfoCard key={index} {...data} />
-          ))}
-        </div>
+              <InfoCard key={index} {...data} />
+            ))}
+          </CardGroup>
+        </Container>
 
         <p className="text-center">Si quieres saber más de nosotros, contactanos...</p>
         <h1><p className="text-center fw-bold mt-4">Contacto</p></h1>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
         <Form>
-        <Row className="mb-3">
+        <Row className="mb-3 gx-2">
         <Form.Group as={Col} controlId="formGridName">
         <Form.Label>Nombre</Form.Label>
         <Form.Control type="text" placeholder="Enter your name" />
@@ -92,7 +95,7 @@ const Contacto = () => {
         <Form.Control as="textarea" rows={4} placeholder="Enter your message" />
         </Form.Group>
 
-        <Row className="mb-3">
+        <Row className="mb-3 gx-2">
         <Form.Group as={Col} controlId="formGridPhone">
         <Form.Label>Telefono</Form.Label>
         <Form.Control type="tel" placeholder="Enter your phone number" />
@@ -109,10 +112,7 @@ const Contacto = () => {
         </Button>
         </Form>
         </div>
-
-
     </Container>
-    
   );
 }
 
