@@ -1,0 +1,18 @@
+/* styles.css */
+.pasos-group {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .pasos-group .active {
+    opacity: 1;
+  }
+  
+  .pasos-group .card {
+    opacity: 0.5;
+  }
+  
+  .reset-card-styles .card {
+    border: none;
+    border-radius: 0;
+  }
+  

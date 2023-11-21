@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
+import ProcesoCompra from "../components/ProcesoCompra";
+import Pasos from "../components/Pasos";
 import '../CSS/anular.css'
+import Asientos from "../components/Asientos";
+
+
 
 function CompraEntrada() {
     const [cantidadEntradas, setCantidadEntradas] = useState(1);
@@ -33,35 +36,27 @@ function CompraEntrada() {
 
     return (
         <Container>
-            <Row className="reset-card-styles">
-                <Col sm={8} className="p-0">
-                    <CardGroup className="text-center">
-                        <Card className="p-2" style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
-                            Paso 1 <br/> Boletos
-                            <br />
-                            <label>
-                                Cantidad de entradas:
-                                <input
-                                    type="number"
-                                    min="1"
-                                    max="6"
-                                    value={cantidadEntradas}
-                                    onChange={handleCantidadChange}
-                                />
-                            </label>
-                        </Card>
-                        <Card>
-                            Paso 2 <br/> Asientos
-                        </Card>
-                    </CardGroup>
+            <Row>
+                <Col>
+                    <Pasos />
                 </Col>
-                <Col sm={4} className="p-0">
-                    <Card className="p-2">
-                        Paso 3 <br/> Resumen
-                        <Card.Body className="p-3">
-                            {renderResumen()}
-                        </Card.Body>
-                    </Card>
+            </Row>
+            <Row>
+                <Col>
+                    <ProcesoCompra   
+                        cantidadEntradas={cantidadEntradas}
+                        asientosSeleccionados={asientosSeleccionados}
+                        setAsientosSeleccionados={setAsientosSeleccionados}
+                    />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Asientos
+                        cantidadEntradas={cantidadEntradas}
+                        asientosSeleccionados={asientosSeleccionados}
+                        setAsientosSeleccionados={setAsientosSeleccionados}
+                    />
                 </Col>
             </Row>
         </Container>
