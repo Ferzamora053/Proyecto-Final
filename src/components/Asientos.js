@@ -56,7 +56,7 @@ function NoLabelExample({ selectedSeats, handleSeatSelection }) {
 
   return (
 
-    <div className="seats-container">
+    <div className="seats-container mt-5">
       <div>
         <img src={pantalla} alt="pantalla" className="pantalla" style={{ width: '500px' }} />
       </div>

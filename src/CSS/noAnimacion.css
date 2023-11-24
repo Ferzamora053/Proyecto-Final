@@ -1,0 +1,12 @@
+.no-animacion {
+    transition: none;
+    animation: none;
+    -webkit-transition: none;
+    -webkit-animation: none;
+    -moz-transition: none;
+    -moz-animation: none;
+    -o-transition: none;
+    -o-animation: none;
+    -ms-transition: none;
+    -ms-animation: none;
+}

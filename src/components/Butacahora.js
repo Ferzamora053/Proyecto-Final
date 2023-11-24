@@ -19,11 +19,11 @@ function Butacahora() {
     );
 }
 
-function VisualizarHorario ({ horario }) {
+function VisualizarHorario({ horario, tipoPantalla, subtitulos, tipoButacas }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/compraentrada?horario=' + horario);
+        navigate(`/compraentrada?horario=${horario}&tipoPantalla=${tipoPantalla}&subtitulos=${subtitulos}&tipoButacas=${JSON.stringify(tipoButacas)}`);
     }
 
     return (
@@ -33,12 +33,18 @@ function VisualizarHorario ({ horario }) {
     );
 }
 
-function TipoButaca ({ tipo, horarios }) {
+function TipoButaca ({ tipo, horarios, tipoPantalla, subtitulos }) {
     return (
         <div className="accordion-body">
             <p className="mt-1">{tipo}</p>
             {horarios.map((horario, index) => (
-                <VisualizarHorario key={index} horario={horario} />
+                <VisualizarHorario 
+                    key={index} 
+                    horario={horario}    
+                    tipoPantalla={tipoPantalla}
+                    subtitulos={subtitulos}
+                    tipoButacas={tipo}
+                />
             ))}
         </div>
     )
@@ -72,7 +78,13 @@ function ItemAcordion ({ id, tipoPantalla, subtitulos, tipoButacas }) {
             </h2>
             <div id={id} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 {tipoButacas.map((tipoButaca, index) => (
-                    <TipoButaca key={index} tipo={tipoButaca.tipo} horarios={tipoButaca.horarios} />
+                    <TipoButaca 
+                        key={index} 
+                        tipo={tipoButaca.tipo} 
+                        horarios={tipoButaca.horarios} 
+                        tipoPantalla={tipoPantalla}
+                        subtitulos={subtitulos}
+                    />
                 ))}
             </div>
         </div>
