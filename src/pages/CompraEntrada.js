@@ -50,15 +50,6 @@ function CompraEntrada() {
                     />
                 </Col>
             </Row>
-            <Row>
-                <Col>
-                    <Asientos
-                        cantidadEntradas={cantidadEntradas}
-                        asientosSeleccionados={asientosSeleccionados}
-                        setAsientosSeleccionados={setAsientosSeleccionados}
-                    />
-                </Col>
-            </Row>
         </Container>
     );
 }
