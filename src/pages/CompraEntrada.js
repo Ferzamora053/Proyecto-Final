@@ -4,8 +4,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProcesoCompra from "../components/ProcesoCompra";
 import Pasos from "../components/Pasos";
-import '../CSS/anular.css'
 import Asientos from "../components/Asientos";
+import PasoBoletos from "../components/PasoBoletos";
+import Resumen from "../components/Resumen";
 
 
 
@@ -23,43 +24,29 @@ function CompraEntrada() {
         console.log(`Confirmada compra de ${cantidadEntradas} entradas. Asientos seleccionados: ${asientosSeleccionados.join(", ")}`);
     };
 
-    const renderResumen = () => {
-        return (
-            <div>
-                <h4>Resumen de la compra</h4>
-                <p>Cantidad de entradas: {cantidadEntradas}</p>
-                <p>Asientos seleccionados: {asientosSeleccionados.join(", ") || "Ninguno"}</p>
-                <button onClick={handleConfirmarCompra}>Confirmar compra</button>
-            </div>
-        );
-    };
-
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <Pasos />
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <ProcesoCompra   
-                        cantidadEntradas={cantidadEntradas}
-                        asientosSeleccionados={asientosSeleccionados}
-                        setAsientosSeleccionados={setAsientosSeleccionados}
-                    />
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Asientos
-                        cantidadEntradas={cantidadEntradas}
-                        asientosSeleccionados={asientosSeleccionados}
-                        setAsientosSeleccionados={setAsientosSeleccionados}
-                    />
-                </Col>
-            </Row>
-        </Container>
+        <div className="d-flex flex-column min-vh-100">
+            <Container fluid className="flex-grow-1">
+                <Row>
+                    <Col lg={9}>
+                        <Pasos />
+                        <ProcesoCompra   
+                            cantidadEntradas={cantidadEntradas}
+                            asientosSeleccionados={asientosSeleccionados}
+                            setAsientosSeleccionados={setAsientosSeleccionados}
+                        />
+                        {/* <Asientos
+                            cantidadEntradas={cantidadEntradas}
+                            asientosSeleccionados={asientosSeleccionados}
+                            setAsientosSeleccionados={setAsientosSeleccionados}
+                        /> */}
+                    </Col>
+                    <Col sm={3} className="d-none d-lg-block">
+                        <Resumen />
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 }
 
