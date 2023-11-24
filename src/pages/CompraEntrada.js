@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import ProcesoCompra from "../components/ProcesoCompra";
 import Pasos from "../components/Pasos";
 import Asientos from "../components/Asientos";
 import PasoBoletos from "../components/PasoBoletos";
 import Resumen from "../components/Resumen";
+import "../CSS/compraentrada.css";
+import "../CSS/resumen.css";
 
 
 
@@ -27,24 +27,26 @@ function CompraEntrada() {
     return (
         <div className="d-flex flex-column min-vh-100">
             <Container fluid className="flex-grow-1">
-                <Row>
-                    <Col lg={9}>
-                        <Pasos />
-                        <ProcesoCompra   
-                            cantidadEntradas={cantidadEntradas}
-                            asientosSeleccionados={asientosSeleccionados}
-                            setAsientosSeleccionados={setAsientosSeleccionados}
-                        />
-                        {/* <Asientos
-                            cantidadEntradas={cantidadEntradas}
-                            asientosSeleccionados={asientosSeleccionados}
-                            setAsientosSeleccionados={setAsientosSeleccionados}
-                        /> */}
-                    </Col>
-                    <Col sm={3} className="d-none d-lg-block">
+                <div className="row">
+                    <div className="col-lg-9">
+                        <div className="custom-div">
+                            <Pasos />
+                            <ProcesoCompra   
+                                cantidadEntradas={cantidadEntradas}
+                                asientosSeleccionados={asientosSeleccionados}
+                                setAsientosSeleccionados={setAsientosSeleccionados}
+                            />
+                            {/* <Asientos
+                                cantidadEntradas={cantidadEntradas}
+                                asientosSeleccionados={asientosSeleccionados}
+                                setAsientosSeleccionados={setAsientosSeleccionados}
+                            /> */}
+                        </div>
+                    </div>
+                    <div className="col-sm-3 d-none d-lg-block custom-resumen">
                         <Resumen />
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </Container>
         </div>
     );
