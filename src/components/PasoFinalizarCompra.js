@@ -15,8 +15,9 @@ const PasoFinalizarCompra = ({ prevStep }) => {
 
   return (
     <div>
-      <h2>Resumen de la Compra</h2>
+      <h2>Confirmar compra</h2>
       {/* Mostrar resumen de la compra */}
+
       <Button className="mt-3" variant="secondary" onClick={handlePrev}>
         Anterior
       </Button>{' '}
