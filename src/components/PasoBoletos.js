@@ -7,9 +7,8 @@ import { Button } from 'react-bootstrap';
 const PasoBoletos = ({ nextStep, handleChange, values }) => {
   const { cantidadBoletos } = values;
 
-  const handleNext = (e) => {
-    e.preventDefault();
-    nextStep();
+  const handleNext = () => {
+    nextStep(cantidadBoletos);
   };
 
   return (

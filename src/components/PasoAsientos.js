@@ -1,9 +1,22 @@
 // PasoAsientos.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import NoLabelExample from '../components/Asientos';
 
-const PasoAsientos = ({ prevStep, nextStep, handleChange, values }) => {
-  const { ubicacionAsientos } = values;
+const PasoAsientos = ({ prevStep, nextStep, values }) => {
+  const { cantidadBoletos } = values;
+
+  const [selectedSeats, setSelectedSeats] = useState([]);
+
+  const handleSeatSelection = (seat) => {
+    if (selectedSeats.includes(seat)) {
+      setSelectedSeats(selectedSeats.filter((selected) => selected !== seat));
+    } else {
+      if (selectedSeats.length < cantidadBoletos) {
+        setSelectedSeats([...selectedSeats, seat]);
+      }
+    }
+  };
 
   const handlePrev = (e) => {
     e.preventDefault();
@@ -12,20 +25,15 @@ const PasoAsientos = ({ prevStep, nextStep, handleChange, values }) => {
 
   const handleNext = (e) => {
     e.preventDefault();
-    nextStep();
+    nextStep(selectedSeats);
   };
 
   return (
     <Form>
-      <Form.Group controlId="formUbicacionAsientos">
-        <Form.Label>Ubicación de los Asientos</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Ingrese la ubicación de los asientos"
-          value={ubicacionAsientos}
-          onChange={handleChange('ubicacionAsientos')}
-        />
-      </Form.Group>
+      <NoLabelExample
+        selectedSeats={selectedSeats}
+        handleSeatSelection={handleSeatSelection}
+      />
       <Button className="mt-3" variant="secondary" onClick={handlePrev}>
         Anterior
       </Button>{' '}
