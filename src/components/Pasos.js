@@ -4,21 +4,17 @@ import "../CSS/pasos.css";
 
 function Pasos() {
   return (
-    <Row className="reset-card-styles mt-3">
-    <Col sm={12} className="p-0">
-        <CardGroup className="text-center">
-            <Card>
-                Paso 1 <br/> Boletos
-            </Card>
-            <Card>
-                Paso 2 <br/> Asientos
-            </Card>
-            <Card>
-                Paso 3 <br/> Finalizar compra
-            </Card>
-        </CardGroup>
-    </Col>
-</Row>
+    <div className='row custom-progress-bar'>
+        <div className='col'>
+            Paso 1 <br/> Boletos
+        </div>
+        <div className='col'>
+            Paso 2 <br/> Asientos
+        </div>
+        <div className='col'>
+            Paso 3 <br/> Confirmación
+        </div>
+    </div>
   );
 }
 

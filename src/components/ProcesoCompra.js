@@ -33,7 +33,6 @@ const ProcesoCompra = () => {
   return (
       <div className='mt-1 mb-4'>
         <Barra now={calcularProgreso()} />
-        <h1>Compra de Entradas</h1>
         {step === 1 && <PasoBoletos nextStep={nextStep} handleChange={handleChange} values={values} />}
         {step === 2 && <PasoAsientos prevStep={prevStep} nextStep={nextStep} handleChange={handleChange} values={values} />}
         {step === 3 && <PasoFinalizarCompra prevStep={prevStep} />}

@@ -10,7 +10,6 @@ function HomePage() {
             <div className="container-lg px-4">
                 <Peliculas />
             </div>
-            <h1><Link to="compraentrada">Comprar entrada</Link></h1>
         </div>
     )
 }

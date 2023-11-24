@@ -15,4 +15,8 @@
     border: none;
     border-radius: 0;
   }
-  
+
+.custom-progress-bar {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0 10px 0;
+}
