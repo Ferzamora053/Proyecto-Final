@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import ProcesoCompra from "../components/ProcesoCompra";
 import Pasos from "../components/Pasos";
@@ -9,8 +10,21 @@ import "../CSS/compraentrada.css";
 import "../CSS/resumen.css";
 
 
-
 function CompraEntrada() {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+
+    // Extraer los parámetros de la URL
+    const horario = searchParams.get("horario");
+    const tipoPantalla = searchParams.get("tipoPantalla");
+    const subtitulos = searchParams.get("subtitulos");
+    const tipoButacas = searchParams.get("tipoButacas");
+    const movieId = searchParams.get("movieId");
+    const movieTitle = searchParams.get("movieTitle");
+    const movieImage = searchParams.get("movieImage");
+
+    console.log("Parameters from URL:", { horario, tipoPantalla, subtitulos, tipoButacas, movieId, movieTitle, movieImage });
+
     const [cantidadEntradas, setCantidadEntradas] = useState(1);
     const [asientosSeleccionados, setAsientosSeleccionados] = useState([]);
 
@@ -36,15 +50,19 @@ function CompraEntrada() {
                                 asientosSeleccionados={asientosSeleccionados}
                                 setAsientosSeleccionados={setAsientosSeleccionados}
                             />
-                            {/* <Asientos
-                                cantidadEntradas={cantidadEntradas}
-                                asientosSeleccionados={asientosSeleccionados}
-                                setAsientosSeleccionados={setAsientosSeleccionados}
-                            /> */}
                         </div>
                     </div>
                     <div className="col-sm-3 d-none d-lg-block custom-resumen">
-                        <Resumen />
+                        <Resumen 
+                            movieTitle={movieTitle}
+                            movieImage={movieImage} 
+                            horario={horario}
+                            tipoPantalla={tipoPantalla}
+                            subtitulos={subtitulos}
+                            tipoButacas={tipoButacas}
+                            cantidadEntradas={cantidadEntradas}
+                            asientosSeleccionados={asientosSeleccionados}
+                        />
                     </div>
                 </div>
             </Container>

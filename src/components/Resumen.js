@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/resumen.css';
 
-function Resumen () {
+function Resumen ({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, tipoButacas, cantidadEntradas, asientosSeleccionados }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -13,7 +13,7 @@ function Resumen () {
         <div className='style-resumen row'>
             <div className='custom-titulo'>
                 <div className='col-10'>
-                    <p className='fs-5 m-0'>Resumen de compra</p>
+                    <p className='m-0'>Resumen de compra</p>
                 </div>
                 <div className='col-2'>
                     <button 
@@ -27,6 +27,20 @@ function Resumen () {
                             <path d="M10 10l4 4m0 -4l-4 4" />
                         </svg>    
                     </button>
+                </div>
+            </div>
+            <div>
+                <p className='fs-5 m-0'>Película: {movieTitle}</p>
+                <div className='row'>
+                    <div className='col div-poster'>
+                        <img className='movie-poster' src={movieImage} alt={movieTitle} />
+                    </div>
+                    <div className='col div-info'>
+                        <p className='mb-1'>Horario: {horario}</p>
+                        <p className='mb-1'>Tipo de pantalla: {tipoPantalla}</p>
+                        <p className='mb-1'>Subtítulos: {subtitulos}</p>
+                        <p className='mb-1'>Tipo de butacas: {tipoButacas}</p>
+                    </div>
                 </div>
             </div>
             <div className='info-bol-as'>

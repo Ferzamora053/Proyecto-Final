@@ -14,15 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route 
-          path="/" 
-          element={
-            <>
-              <Layout />
-              <ScrollToTop />
-            </>
-          }
-        >
+        <Route path="/" element={<> <Layout /> <ScrollToTop /> </>}>
           <Route index element={<HomePage />} />
           <Route path="infopeli/:id" element={<InfoPelicula />} />
           <Route path="compraentrada" element={<CompraEntrada />} />

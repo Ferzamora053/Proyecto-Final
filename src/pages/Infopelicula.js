@@ -43,6 +43,7 @@ function InfoPelicula () {
     const genres = DataPelicula ? DataPelicula.genres.map(genre => genre.name).join(', ') : OmdbData.Genre || 'Genre not available';
 
     const dataPelicula = {
+        movieId: id,
         titulo: DataPelicula ? DataPelicula.title : OmdbData.Title,
         genero: genres,
         duracion: DataPelicula.runtime + ' min',
@@ -58,7 +59,7 @@ function InfoPelicula () {
         <div>
             {/* <Video videoUrl={youtubeVideoUrl} /> */}
             <Info data={dataPelicula}/>
-            <Butacahora />  
+            <Butacahora data={dataPelicula} />  
         </div>      
     );
 }

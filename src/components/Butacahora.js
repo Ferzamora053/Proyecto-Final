@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "../CSS/butacahora.css";
 import "../CSS/anular.css";
 
-function Butacahora() {
+function Butacahora({ data }) {
+    console.log("Movie ID en Butacahora: ", data.movieId);
+
     const dataAcordion = [
         { id: 'collapseOne', tipoPantalla: '2D', subtitulos: 'DOBLADA', tipoButacas: [{ tipo: 'BUTACA TRADICIONAL', horarios: ['12:00', '16:00', '20:00'] }, { tipo: 'BUTACA PREMIUM', horarios: ['12:00', '16:00', '20:00'] }] },
         { id: 'collapseTwo', tipoPantalla: '2D', subtitulos: 'SUBTITULADA', tipoButacas: [{ tipo: 'BUTACA TRADICIONAL', horarios: ['12:00', '16:00', '20:00'] }, { tipo: 'BUTACA PREMIUM', horarios: ['12:00', '16:00', '20:00'] }] },
@@ -14,16 +16,24 @@ function Butacahora() {
     return (
         <div className="container-lg reset-card-styles">
             <h1><p className="text-start fw-bold mt-3">Horarios</p></h1>
-            <Acordion items={dataAcordion} />
+            <Acordion items={dataAcordion} movieId={data.movieId} movieTitle={data.titulo} movieImage={data.image} />
         </div>
     );
 }
 
-function VisualizarHorario({ horario, tipoPantalla, subtitulos, tipoButacas }) {
+function VisualizarHorario({ horario, tipoPantalla, subtitulos, tipoButacas, movieId, movieTitle, movieImage }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/compraentrada?horario=${horario}&tipoPantalla=${tipoPantalla}&subtitulos=${subtitulos}&tipoButacas=${JSON.stringify(tipoButacas)}`);
+        console.log("Horario:", horario);
+        console.log("Tipo de Pantalla:", tipoPantalla);
+        console.log("Subtítulos:", subtitulos);
+        console.log("Tipo de Butacas:", tipoButacas);
+        console.log("Movie ID:", movieId);
+        console.log("Movie Title:", movieTitle);
+        console.log("Movie Image:", movieImage);
+
+        navigate(`/compraentrada?horario=${horario}&tipoPantalla=${tipoPantalla}&subtitulos=${subtitulos}&tipoButacas=${JSON.stringify(tipoButacas)}&movieId=${movieId}&movieTitle=${encodeURIComponent(movieTitle)}&movieImage=${encodeURIComponent(movieImage)}`);
     }
 
     return (
@@ -33,7 +43,7 @@ function VisualizarHorario({ horario, tipoPantalla, subtitulos, tipoButacas }) {
     );
 }
 
-function TipoButaca ({ tipo, horarios, tipoPantalla, subtitulos }) {
+function TipoButaca ({ tipo, horarios, tipoPantalla, subtitulos, movieId, movieTitle, movieImage }) {
     return (
         <div className="accordion-body">
             <p className="mt-1">{tipo}</p>
@@ -44,13 +54,16 @@ function TipoButaca ({ tipo, horarios, tipoPantalla, subtitulos }) {
                     tipoPantalla={tipoPantalla}
                     subtitulos={subtitulos}
                     tipoButacas={tipo}
+                    movieId={movieId}
+                    movieTitle={movieTitle}
+                    movieImage={movieImage}
                 />
             ))}
         </div>
     )
 }
 
-function ItemAcordion ({ id, tipoPantalla, subtitulos, tipoButacas }) {
+function ItemAcordion ({ id, tipoPantalla, subtitulos, tipoButacas, movieId, movieTitle, movieImage }) {
     return (
         <div className="accordion-item">
             <h2 className="accordion-header">
@@ -78,12 +91,15 @@ function ItemAcordion ({ id, tipoPantalla, subtitulos, tipoButacas }) {
             </h2>
             <div id={id} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 {tipoButacas.map((tipoButaca, index) => (
-                    <TipoButaca 
-                        key={index} 
-                        tipo={tipoButaca.tipo} 
-                        horarios={tipoButaca.horarios} 
+                    <TipoButaca
+                        key={index}
+                        tipo={tipoButaca.tipo}
+                        horarios={tipoButaca.horarios}
                         tipoPantalla={tipoPantalla}
                         subtitulos={subtitulos}
+                        movieId={movieId}
+                        movieTitle={movieTitle}
+                        movieImage={movieImage}
                     />
                 ))}
             </div>
@@ -91,11 +107,11 @@ function ItemAcordion ({ id, tipoPantalla, subtitulos, tipoButacas }) {
     );
 }
 
-function Acordion ({items}) {
+function Acordion ({ items, movieId, movieTitle, movieImage }) {
     return (
         <div className="accordion mb-4" id="accordionExample">
             {items.map((item, index) => (
-                <ItemAcordion key={index} {...item} />
+                <ItemAcordion key={index} {...item} movieId={movieId} movieTitle={movieTitle} movieImage={movieImage} />
             ))}
         </div>
     );
