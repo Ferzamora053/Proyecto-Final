@@ -3,14 +3,14 @@ import { useLocation } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import ProcesoCompra from "../components/ProcesoCompra";
 import Pasos from "../components/Pasos";
-import Asientos from "../components/Asientos";
-import PasoBoletos from "../components/PasoBoletos";
-import Resumen from "../components/Resumen";
+import ResumenComponents from "../components/Resumen";
 import "../CSS/compraentrada.css";
 import "../CSS/resumen.css";
 
 
 function CompraEntrada() {
+    const { Resumen, ResumenMobile } = ResumenComponents;
+
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
 
@@ -42,7 +42,7 @@ function CompraEntrada() {
         <div className="d-flex flex-column min-vh-100">
             <Container fluid className="flex-grow-1">
                 <div className="row">
-                    <div className="col-lg-9">
+                    <div className="col-lg-8 col-xxl-9">
                         <div className="custom-div">
                             <Pasos />
                             <ProcesoCompra   
@@ -52,7 +52,7 @@ function CompraEntrada() {
                             />
                         </div>
                     </div>
-                    <div className="col-sm-3 d-none d-lg-block custom-resumen">
+                    <div className="col-lg-4 col-xxl-3 d-none d-lg-block custom-resumen">
                         <Resumen 
                             movieTitle={movieTitle}
                             movieImage={movieImage} 
@@ -64,6 +64,14 @@ function CompraEntrada() {
                             asientosSeleccionados={asientosSeleccionados}
                         />
                     </div>
+                </div>
+                <div className="d-block d-lg-none">
+                    <ResumenMobile 
+                        movieTitle={movieTitle}
+                        horario={horario}
+                        cantidadEntradas={cantidadEntradas}
+                        asientosSeleccionados={asientosSeleccionados}
+                    />
                 </div>
             </Container>
         </div>

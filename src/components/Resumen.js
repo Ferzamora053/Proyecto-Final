@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import '../CSS/resumen.css';
 
 function Resumen ({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, tipoButacas, cantidadEntradas, asientosSeleccionados }) {
@@ -36,10 +37,10 @@ function Resumen ({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, t
                         <img className='movie-poster' src={movieImage} alt={movieTitle} />
                     </div>
                     <div className='col div-info'>
-                        <p className='mb-1'>Horario: {horario}</p>
-                        <p className='mb-1'>Tipo de pantalla: {tipoPantalla}</p>
-                        <p className='mb-1'>Subtítulos: {subtitulos}</p>
-                        <p className='mb-1'>Tipo de butacas: {tipoButacas}</p>
+                        <p className='mb-3'>Horario: {horario}</p>
+                        <p className='mb-3'>Tipo de pantalla: {tipoPantalla}</p>
+                        <p className='mb-3'>Subtítulos: {subtitulos}</p>
+                        <p className='mb-3'>Tipo de butacas: {tipoButacas}</p>
                     </div>
                 </div>
             </div>
@@ -53,4 +54,20 @@ function Resumen ({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, t
     );
 }
 
-export default Resumen;
+function ResumenMobile({ movieTitle, horario, cantidadEntradas, asientosSeleccionados }) {
+    return (
+        <Container className='mt-5 text-center border-top'>
+            <h5 className='mt-3 mb-4'>Resumen de compra</h5>
+            <Row>
+                <Col className='mt-2 mb-4 custom-border'>Película: {movieTitle}</Col>
+                <Col className='mt-2 mb-4 custom-border'>Horario: {horario}</Col>
+            </Row>
+            <Row className='custom-border mb-4'>
+                <Col className='py-2 text-start'>Total a pagar: </Col>
+                <Col className='py-2 text-end'>Suma</Col>
+            </Row>
+        </Container>
+    );
+}
+
+export default { Resumen, ResumenMobile };

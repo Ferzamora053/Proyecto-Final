@@ -2,3 +2,27 @@
     text-align: center;
     margin: 0 auto;
 }
+
+.icon-tabler {
+    width: 32px;
+    height: 32px;
+}
+
+.pantalla {
+    width: 500px;
+}
+
+@media (max-width: 430px) {
+    .pantalla {
+        width: 100%;
+    }
+
+    .seats-container {
+        padding: 10px;
+    }
+
+    .icon-tabler {
+        width: 28px;
+        height: 28px;
+    }
+}

@@ -3,7 +3,7 @@ import "../CSS/footer.css";
 
 function Footer() {
   return (
-    <footer className="footer-style mt-4">
+    <footer className="footer-style">
       <div className="container">
         <div className="row">
           <div className="col-md-6">

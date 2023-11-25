@@ -40,7 +40,7 @@ function Peliculas() {
   }, [apiKey, omdbApiKey, fechaInicio, fechaFin]);
 
   return (
-    <div className="container-fluid-lg d-flex justify-content-center align-items-center h-80">
+    <div className="container-fluid-lg d-flex justify-content-center align-items-center h-80 mb-4">
       <div className="row">
         <div className="mb-1 mt-4">
           <h2 className="text-center">Cartelera</h2>
