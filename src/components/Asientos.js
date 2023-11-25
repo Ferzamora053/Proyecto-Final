@@ -56,12 +56,12 @@ function NoLabelExample({ selectedSeats, handleSeatSelection }) {
 
   return (
 
-    <div className="seats-container">
+    <div className="seats-container mt-5">
       <div>
-        <img src={pantalla} alt="pantalla" className="pantalla mt-4" style={{ width: '500px' }} />
+        <img src={pantalla} alt="pantalla" className="pantalla mt-4" />
       </div>
       {renderSeats()}
-      <p>Asientos seleccionados: {selectedSeats.join(', ')}</p>
+      <p className='mt-4'>Asientos seleccionados: {selectedSeats.join(', ')}</p>
     </div>
   );
 }

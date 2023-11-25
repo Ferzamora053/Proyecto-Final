@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import '../CSS/resumen.css';
 
-function Resumen () {
+function Resumen ({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, tipoButacas, cantidadEntradas, asientosSeleccionados }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -13,7 +14,7 @@ function Resumen () {
         <div className='style-resumen row'>
             <div className='custom-titulo'>
                 <div className='col-10'>
-                    <p className='fs-5 m-0'>Resumen de compra</p>
+                    <p className='m-0'>Resumen de compra</p>
                 </div>
                 <div className='col-2'>
                     <button 
@@ -29,6 +30,20 @@ function Resumen () {
                     </button>
                 </div>
             </div>
+            <div>
+                <p className='fs-5 m-0'>Película: {movieTitle}</p>
+                <div className='row'>
+                    <div className='col div-poster'>
+                        <img className='movie-poster' src={movieImage} alt={movieTitle} />
+                    </div>
+                    <div className='col div-info'>
+                        <p className='mb-3'>Horario: {horario}</p>
+                        <p className='mb-3'>Tipo de pantalla: {tipoPantalla}</p>
+                        <p className='mb-3'>Subtítulos: {subtitulos}</p>
+                        <p className='mb-3'>Tipo de butacas: {tipoButacas}</p>
+                    </div>
+                </div>
+            </div>
             <div className='info-bol-as'>
                 Cantidad de boletos: <br /> Asientos:
             </div>
@@ -39,4 +54,20 @@ function Resumen () {
     );
 }
 
-export default Resumen;
+function ResumenMobile({ movieTitle, horario, cantidadEntradas, asientosSeleccionados }) {
+    return (
+        <Container className='mt-5 text-center border-top'>
+            <h5 className='mt-3 mb-4'>Resumen de compra</h5>
+            <Row>
+                <Col className='mt-2 mb-4 custom-border'>Película: {movieTitle}</Col>
+                <Col className='mt-2 mb-4 custom-border'>Horario: {horario}</Col>
+            </Row>
+            <Row className='custom-border mb-4'>
+                <Col className='py-2 text-start'>Total a pagar: </Col>
+                <Col className='py-2 text-end'>Suma</Col>
+            </Row>
+        </Container>
+    );
+}
+
+export default { Resumen, ResumenMobile };
