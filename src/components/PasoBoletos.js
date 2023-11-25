@@ -4,11 +4,11 @@ import Container from 'react-bootstrap/Container';
 import '../CSS/pasoboletos.css';
 import { Button } from 'react-bootstrap';
 
-const PasoBoletos = ({ nextStep, handleChange, values }) => {
-  const { cantidadBoletos } = values;
+const PasoBoletos = ({ nextStep }) => {
+  const [totalBoletos, setTotalBoletos] = useState(0);
 
   const handleNext = () => {
-    nextStep(cantidadBoletos);
+    nextStep(totalBoletos);
   };
 
   return (
@@ -17,9 +17,9 @@ const PasoBoletos = ({ nextStep, handleChange, values }) => {
       <p style={{ marginTop: '25px' }}>Puedes comprar hasta un máximo de 5 boletos por transacción.</p>
       <p className='fs-4 mt-5'>Tipo de Butaca</p>
       <Container className='mt-4' style={{ minWidth: '200px', maxWidth: '500px' }}>
-        <Boton edad='Adulto' precio='100' />
-        <Boton edad='Niño' precio='50' />
-        <Boton edad='Adulto Mayor' precio='75' />
+        <Boton edad='Adulto' precio='100' setTotalBoletos={setTotalBoletos} totalBoletos={totalBoletos}  />
+        <Boton edad='Niño' precio='50' setTotalBoletos={setTotalBoletos} totalBoletos={totalBoletos}  />
+        <Boton edad='Adulto Mayor' precio='75' setTotalBoletos={setTotalBoletos} totalBoletos={totalBoletos}  />
       </Container>
       <button className='custom-btn-success' onClick={handleNext}>
         Siguiente
@@ -28,16 +28,23 @@ const PasoBoletos = ({ nextStep, handleChange, values }) => {
   );
 };
 
-function Boton ({ edad, precio }) {
+function Boton ({ edad, precio, totalBoletos, setTotalBoletos }) {
   const [cantidad, setCantidad] = useState(0)
+  const maxCantidad = 5;
 
   const handleSumar = () => {
-    setCantidad(cantidad + 1)
-  }
+    if (cantidad < maxCantidad && totalBoletos < maxCantidad) {
+      setCantidad(cantidad + 1);
+      setTotalBoletos(totalBoletos + 1);
+    }
+  };
 
   const handleRestar = () => {
-    setCantidad(cantidad > 0 ? cantidad - 1 : 0)
-  }
+    if (cantidad > 0 && totalBoletos > 0) {
+      setCantidad(cantidad - 1);
+      setTotalBoletos(totalBoletos - 1);
+    }
+  };
 
   return (
     <div className='row mb-2 d-flex align-items-center'>
@@ -66,7 +73,12 @@ function Boton ({ edad, precio }) {
             <path d='M5 12l14 0' />
           </svg>
         </button>
-        <button type='button' onClick={handleSumar} className='custom-btn'>
+        <button 
+          type='button' 
+          onClick={handleSumar} 
+          className={`custom-btn ${totalBoletos >= maxCantidad ? 'disabled-btn' : ''}`}
+          disabled={totalBoletos >= maxCantidad}
+        >
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='icon icon-tabler icon-tabler-plus'
