@@ -76,34 +76,34 @@ const Contacto = () => {
         <Row className="mb-3 gx-2">
         <Form.Group as={Col} controlId="formGridName">
         <Form.Label>Nombre</Form.Label>
-        <Form.Control type="text" placeholder="Enter your name" />
+        <Form.Control type="text" placeholder="Ingresa tu nombre" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridEmail">
         <Form.Label>Email</Form.Label>
-        <Form.Control type="email" placeholder="Enter your email" />
+        <Form.Control type="email" placeholder="Ingresa tu correo" />
         </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" controlId="formGridSubject">
         <Form.Label>Tema</Form.Label>
-        <Form.Control placeholder="Enter the subject" />
+        <Form.Control placeholder="Ingresa tu tema" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGridMessage">
         <Form.Label>Mensaje</Form.Label>
-        <Form.Control as="textarea" rows={4} placeholder="Enter your message" />
+        <Form.Control as="textarea" rows={4} placeholder="Ingresa tu mensaje" />
         </Form.Group>
 
         <Row className="mb-3 gx-2">
         <Form.Group as={Col} controlId="formGridPhone">
         <Form.Label>Telefono</Form.Label>
-        <Form.Control type="tel" placeholder="Enter your phone number" />
+        <Form.Control type="tel" placeholder="Ingresa tu telefono" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridCompany">
         <Form.Label>Compañia</Form.Label>
-        <Form.Control type="text" placeholder="Enter your company name" />
+        <Form.Control type="text" placeholder="Ingresa tu compañia" />
         </Form.Group>
         </Row>
 
