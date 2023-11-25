@@ -2,14 +2,28 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import '../CSS/pasoboletos.css';
-import { Button } from 'react-bootstrap';
 
-const PasoBoletos = ({ nextStep }) => {
+const PasoBoletos = ({ nextStep, actualizarCantidadBoletos }) => {
   const [totalBoletos, setTotalBoletos] = useState(0);
+  const [cantidadAdulto, setCantidadAdulto] = useState(0);
+  const [cantidadNino, setCantidadNino] = useState(0);
+  const [cantidadAdultoMayor, setCantidadAdultoMayor] = useState(0);
 
   const handleNext = () => {
-    nextStep(totalBoletos);
+    const quantities = {
+      cantidadBoletos: totalBoletos,
+      cantidadAdulto,
+      cantidadNino,
+      cantidadAdultoMayor,
+    };
+
+    nextStep(quantities);
   };
+
+  console.log('Cantidad de boletos: ', totalBoletos);
+  console.log('Cantidad de Adulto: ', cantidadAdulto);
+  console.log('Cantidad de Niño: ', cantidadNino);
+  console.log('Cantidad de Adulto Mayor: ', cantidadAdultoMayor);
 
   return (
     <div className='container-boletos'>
@@ -17,25 +31,49 @@ const PasoBoletos = ({ nextStep }) => {
       <p style={{ marginTop: '25px' }}>Puedes comprar hasta un máximo de 5 boletos por transacción.</p>
       <p className='fs-4 mt-5'>Tipo de Butaca</p>
       <Container className='mt-4' style={{ minWidth: '200px', maxWidth: '500px' }}>
-        <Boton edad='Adulto' precio='100' setTotalBoletos={setTotalBoletos} totalBoletos={totalBoletos}  />
-        <Boton edad='Niño' precio='50' setTotalBoletos={setTotalBoletos} totalBoletos={totalBoletos}  />
-        <Boton edad='Adulto Mayor' precio='75' setTotalBoletos={setTotalBoletos} totalBoletos={totalBoletos}  />
+        <Boton
+          edad='Adulto'
+          precio='100'
+          totalBoletos={totalBoletos}
+          setTotalBoletos={setTotalBoletos}
+          cantidad={cantidadAdulto}
+          setCantidad={setCantidadAdulto}
+          actualizarCantidadBoletos={actualizarCantidadBoletos}
+        />
+        <Boton
+          edad='Niño'
+          precio='50'
+          totalBoletos={totalBoletos}
+          setTotalBoletos={setTotalBoletos}
+          cantidad={cantidadNino}
+          setCantidad={setCantidadNino}
+          actualizarCantidadBoletos={actualizarCantidadBoletos}
+        />
+        <Boton
+          edad='Adulto Mayor'
+          precio='75'
+          totalBoletos={totalBoletos}
+          setTotalBoletos={setTotalBoletos}
+          cantidad={cantidadAdultoMayor}
+          setCantidad={setCantidadAdultoMayor}
+          actualizarCantidadBoletos={actualizarCantidadBoletos}
+        />
       </Container>
-      <button className='custom-btn-success' onClick={handleNext}>
+      <button className='custom-btn-success' onClick={() => handleNext(actualizarCantidadBoletos)}>
         Siguiente
       </button>
     </div>
   );
 };
 
-function Boton ({ edad, precio, totalBoletos, setTotalBoletos }) {
-  const [cantidad, setCantidad] = useState(0)
+function Boton ({ edad, precio, totalBoletos, setTotalBoletos, cantidad, setCantidad, actualizarCantidadBoletos }) {
   const maxCantidad = 5;
 
   const handleSumar = () => {
     if (cantidad < maxCantidad && totalBoletos < maxCantidad) {
       setCantidad(cantidad + 1);
       setTotalBoletos(totalBoletos + 1);
+      actualizarCantidadBoletos(totalBoletos + 1);
     }
   };
 
@@ -43,6 +81,7 @@ function Boton ({ edad, precio, totalBoletos, setTotalBoletos }) {
     if (cantidad > 0 && totalBoletos > 0) {
       setCantidad(cantidad - 1);
       setTotalBoletos(totalBoletos - 1);
+      actualizarCantidadBoletos(totalBoletos - 1);
     }
   };
 
@@ -55,7 +94,7 @@ function Boton ({ edad, precio, totalBoletos, setTotalBoletos }) {
           type='button'
           onClick={handleRestar}
           className={`custom-btn ${cantidad === 0 ? 'disabled-btn' : ''}`}
-          disabled={cantidad === 0}
+          disabled={ cantidad === 0 }
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -73,11 +112,11 @@ function Boton ({ edad, precio, totalBoletos, setTotalBoletos }) {
             <path d='M5 12l14 0' />
           </svg>
         </button>
-        <button 
-          type='button' 
-          onClick={handleSumar} 
+        <button
+          type='button'
+          onClick={handleSumar}
           className={`custom-btn ${totalBoletos >= maxCantidad ? 'disabled-btn' : ''}`}
-          disabled={totalBoletos >= maxCantidad}
+          disabled={ totalBoletos >= maxCantidad }
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

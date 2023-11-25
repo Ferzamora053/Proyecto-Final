@@ -3,12 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../CSS/resumen.css';
 
-function Resumen ({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, tipoButacas, cantidadEntradas, asientosSeleccionados }) {
+function Resumen({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, tipoButacas, cantidades, ubicacionAsientos }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate('/');
-    }
+    };
+
+    console.log('Cantidad de boletos: ', cantidades);
+    console.log('Cantidad de Adulto: ', cantidades.cantidadAdulto);
+    console.log('Ubicación de asientos: ', ubicacionAsientos);
 
     return (
         <div className='style-resumen row'>
@@ -45,7 +49,7 @@ function Resumen ({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, t
                 </div>
             </div>
             <div className='info-bol-as'>
-                Cantidad de boletos: <br /> Asientos:
+                Cantidad de boletos: {cantidades} <br /> Asientos: {ubicacionAsientos}
             </div>
             <div>
                 Total a pagar:
@@ -54,7 +58,7 @@ function Resumen ({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, t
     );
 }
 
-function ResumenMobile({ movieTitle, horario, cantidadEntradas, asientosSeleccionados }) {
+function ResumenMobile({ movieTitle, horario}) {
     return (
         <Container className='mt-5 text-center border-top'>
             <h5 className='mt-3 mb-4'>Resumen de compra</h5>
@@ -63,7 +67,7 @@ function ResumenMobile({ movieTitle, horario, cantidadEntradas, asientosSeleccio
                 <Col className='mt-2 mb-4 custom-border'>Horario: {horario}</Col>
             </Row>
             <Row className='custom-border mb-4'>
-                <Col className='py-2 text-start'>Total a pagar: </Col>
+                <Col className='py-2 text-start'>Total a pagar:</Col>
                 <Col className='py-2 text-end'>Suma</Col>
             </Row>
         </Container>

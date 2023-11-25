@@ -4,25 +4,22 @@ import PasoBoletos from './PasoBoletos';
 import PasoAsientos from './PasoAsientos';
 import PasoFinalizarCompra from './PasoFinalizarCompra';
 import Barra from './Barra';
-import { Container } from 'react-bootstrap';
 
-const ProcesoCompra = () => {
+const ProcesoCompra = ({ actualizarCantidadBoletos }) => {
   const [step, setStep] = useState(1);
-  const [values, setValues] = useState({
-    cantidadBoletos: 0,
-    ubicacionAsientos: '',
-  });
+  const [cantidadBoletos, setCantidadBoletos] = useState(0);
 
-  const nextStep = () => {
+  const nextStep = (quantities) => {
+    setCantidadBoletos(quantities);
     setStep(step + 1);
+
+    console.log('Cantidad de Adulto PC: ', quantities.cantidadAdulto);
+    console.log('Cantidad de Niño PC: ', quantities.cantidadNino);
+    console.log('Cantidad de Adulto Mayor PC: ', quantities.cantidadAdultoMayor);
   };
 
   const prevStep = () => {
     setStep(step - 1);
-  };
-
-  const handleChange = (input) => (e) => {
-    setValues({ ...values, [input]: e.target.value });
   };
 
   const calcularProgreso = () => {
@@ -31,12 +28,19 @@ const ProcesoCompra = () => {
   };
 
   return (
-      <div className='mt-1 mb-4'>
-        <Barra now={calcularProgreso()} />
-        {step === 1 && <PasoBoletos nextStep={nextStep} handleChange={handleChange} values={values} />}
-        {step === 2 && <PasoAsientos prevStep={prevStep} nextStep={nextStep} handleChange={handleChange} values={values} />}
-        {step === 3 && <PasoFinalizarCompra prevStep={prevStep} />}
-      </div>
+    <div className='mt-1 mb-4'>
+      <Barra now={calcularProgreso()} />
+      {step === 1 && (
+        <PasoBoletos
+          nextStep={nextStep}
+          actualizarCantidadBoletos={actualizarCantidadBoletos}
+        />
+      )}
+      {step === 2 && (
+        <PasoAsientos prevStep={prevStep} nextStep={nextStep} totalBoletos={cantidadBoletos.cantidadBoletos} />
+      )}
+      {step === 3 && <PasoFinalizarCompra prevStep={prevStep} />}
+    </div>
   );
 };
 

@@ -4,18 +4,17 @@ import { Form, Button } from 'react-bootstrap';
 import NoLabelExample from '../components/Asientos';
 import pantalla from "../images/pantalla.png";
 
-const PasoAsientos = ({ prevStep, nextStep, values }) => {
-  const { cantidadBoletos } = values;
-
+const PasoAsientos = ({ prevStep, nextStep, totalBoletos }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   const handleSeatSelection = (seat) => {
-    if (selectedSeats.includes(seat)) {
-      setSelectedSeats(selectedSeats.filter((selected) => selected !== seat));
-    } else {
-      if (selectedSeats.length < cantidadBoletos) {
-        setSelectedSeats([...selectedSeats, seat]);
-      }
+    if (selectedSeats.length < totalBoletos) {
+      // Solo permite la selección de asientos si no se excede la cantidad de boletos
+      setSelectedSeats((prevSeats) =>
+        prevSeats.includes(seat)
+          ? prevSeats.filter((selected) => selected !== seat)
+          : [...prevSeats, seat]
+      );
     }
   };
 
@@ -28,6 +27,8 @@ const PasoAsientos = ({ prevStep, nextStep, values }) => {
     e.preventDefault();
     nextStep(selectedSeats);
   };
+
+  console.log('Cantidad de boletos:', totalBoletos )
 
   return (
     <Form>
