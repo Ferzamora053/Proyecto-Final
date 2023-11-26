@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card, CardGroup, Col, Row } from 'react-bootstrap';
 import "../CSS/pasos.css";
 
 function Pasos() {

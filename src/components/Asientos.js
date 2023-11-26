@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
-import "../CSS/asientos.css"
 import pantalla from "../images/pantalla.png";
+import "../CSS/asientos.css"
 
 function NoLabelExample({ selectedSeats, handleSeatSelection }) {
   const renderSeats = () => {

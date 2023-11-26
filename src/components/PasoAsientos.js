@@ -1,8 +1,6 @@
-// PasoAsientos.js
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import NoLabelExample from '../components/Asientos';
-import pantalla from "../images/pantalla.png";
 
 const PasoAsientos = ({ prevStep, nextStep, totalBoletos }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);

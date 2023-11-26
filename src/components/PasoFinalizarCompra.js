@@ -1,4 +1,3 @@
-// PasoFinalizarCompra.js
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import Fomrtarjeta from '../components/Formtarjeta';

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Video from "../components/Video";
 import Info from "../components/Info";
 import Butacahora from "../components/Butacahora";
 import axios from "axios";
@@ -57,7 +56,6 @@ function InfoPelicula () {
     
     return (
         <div>
-            {/* <Video videoUrl={youtubeVideoUrl} /> */}
             <Info data={dataPelicula}/>
             <Butacahora data={dataPelicula} />  
         </div>      

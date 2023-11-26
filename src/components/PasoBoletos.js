@@ -1,4 +1,3 @@
-// pasoBoletos.js
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import '../CSS/pasoboletos.css';

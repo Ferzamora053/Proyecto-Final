@@ -1,4 +1,3 @@
-// ProcesoCompra.js
 import React, { useState } from 'react';
 import PasoBoletos from './PasoBoletos';
 import PasoAsientos from './PasoAsientos';
