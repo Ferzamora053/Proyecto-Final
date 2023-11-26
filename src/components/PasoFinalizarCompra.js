@@ -1,26 +1,33 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import Fomrtarjeta from '../components/Formtarjeta';
+import { useNavigate } from 'react-router-dom';
+import Formtarjeta from '../components/Formtarjeta';
+import '../CSS/custombotones.css';
 
-const PasoFinalizarCompra = ({ prevStep }) => {
+const PasoFinalizarCompra = ({ prevStep, totalBoletos }) => {
   const handlePrev = (e) => {
     e.preventDefault();
     prevStep();
   };
 
+  const navigate = useNavigate();
+
   const handleFinalizarCompra = () => {
-    // Lógica para finalizar la compra
-    console.log('Compra finalizada');
+    alert('¡Compra realizada con éxito, muchas gracias por elerginos!')
+    navigate('/');
   };
 
   return (
     <div>
       <h2>Confirmar compra</h2>
-      {/* Mostrar resumen de la compra */}
-      <Fomrtarjeta />
-      <Button className="mt-3" variant="secondary" onClick={handlePrev}>
-        Anterior
-      </Button>{' '}
+      <Formtarjeta />
+      <div className='align-btns'>
+        <button className='custom-btn-back' onClick={handlePrev}>
+          Anterior
+        </button>
+        <button className='custom-btn-end' onClick={handleFinalizarCompra}>
+          Finalizar Compra
+        </button>
+      </div>
     </div>
   );
 };

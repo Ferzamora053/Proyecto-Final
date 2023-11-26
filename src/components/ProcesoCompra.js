@@ -4,17 +4,11 @@ import PasoAsientos from './PasoAsientos';
 import PasoFinalizarCompra from './PasoFinalizarCompra';
 import Barra from './Barra';
 
-const ProcesoCompra = ({ actualizarCantidadBoletos }) => {
+const ProcesoCompra = ({ setCantidadBoletos, cantidadBoletos, ubicacionAsientos, setUbicacionAsientos }) => {
   const [step, setStep] = useState(1);
-  const [cantidadBoletos, setCantidadBoletos] = useState(0);
 
-  const nextStep = (quantities) => {
-    setCantidadBoletos(quantities);
+  const nextStep = () => {
     setStep(step + 1);
-
-    console.log('Cantidad de Adulto PC: ', quantities.cantidadAdulto);
-    console.log('Cantidad de Niño PC: ', quantities.cantidadNino);
-    console.log('Cantidad de Adulto Mayor PC: ', quantities.cantidadAdultoMayor);
   };
 
   const prevStep = () => {
@@ -30,15 +24,12 @@ const ProcesoCompra = ({ actualizarCantidadBoletos }) => {
     <div className='mt-1 mb-4'>
       <Barra now={calcularProgreso()} />
       {step === 1 && (
-        <PasoBoletos
-          nextStep={nextStep}
-          actualizarCantidadBoletos={actualizarCantidadBoletos}
-        />
+        <PasoBoletos nextStep={nextStep} setCantidadBoletos={setCantidadBoletos} cantidadBoletos={cantidadBoletos} />
       )}
       {step === 2 && (
-        <PasoAsientos prevStep={prevStep} nextStep={nextStep} totalBoletos={cantidadBoletos.cantidadBoletos} />
+        <PasoAsientos prevStep={prevStep} nextStep={nextStep} totalBoletos={cantidadBoletos.cantidadBoletos} selectedSeats={ubicacionAsientos} setSelectedSeats={setUbicacionAsientos} />
       )}
-      {step === 3 && <PasoFinalizarCompra prevStep={prevStep} />}
+      {step === 3 && <PasoFinalizarCompra prevStep={prevStep} totalBoletos={cantidadBoletos.cantidadBoletos} selectedSeats={ubicacionAsientos} />}
     </div>
   );
 };

@@ -10,9 +10,13 @@ function Resumen({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, ti
         navigate('/');
     };
 
-    console.log('Cantidad de boletos: ', cantidades);
-    console.log('Cantidad de Adulto: ', cantidades.cantidadAdulto);
-    console.log('Ubicación de asientos: ', ubicacionAsientos);
+    const sumaPrecio = () => {
+        let suma = 0;
+        suma += cantidades.cantidadAdulto * 2990;
+        suma += cantidades.cantidadNino * 1490;
+        suma += cantidades.cantidadAdultoMayor * 1990;
+        return suma;
+    }
 
     return (
         <div className='style-resumen row'>
@@ -49,16 +53,24 @@ function Resumen({ movieTitle, movieImage, horario, tipoPantalla, subtitulos, ti
                 </div>
             </div>
             <div className='info-bol-as'>
-                Cantidad de boletos: {cantidades} <br /> Asientos: {ubicacionAsientos}
+                Cantidad de boletos: {cantidades.cantidadBoletos} <br /> Asientos: {ubicacionAsientos.join(', ')}
             </div>
             <div>
-                Total a pagar:
+                Total a pagar: ${sumaPrecio()} CLP
             </div>
         </div>
     );
 }
 
-function ResumenMobile({ movieTitle, horario}) {
+function ResumenMobile({ movieTitle, horario, cantidades }) {
+    const sumaPrecio = () => {
+        let suma = 0;
+        suma += cantidades.cantidadAdulto * 2990;
+        suma += cantidades.cantidadNino * 1490;
+        suma += cantidades.cantidadAdultoMayor * 1990;
+        return suma;
+    }
+
     return (
         <Container className='mt-5 text-center border-top'>
             <h5 className='mt-3 mb-4'>Resumen de compra</h5>
@@ -67,8 +79,8 @@ function ResumenMobile({ movieTitle, horario}) {
                 <Col className='mt-2 mb-4 custom-border'>Horario: {horario}</Col>
             </Row>
             <Row className='custom-border mb-4'>
-                <Col className='py-2 text-start'>Total a pagar:</Col>
-                <Col className='py-2 text-end'>Suma</Col>
+                <Col className='py-2 text-start'>Total a pagar: {cantidades.cantidadBoletos}</Col>
+                <Col className='py-2 text-end'>${sumaPrecio()} CLP</Col>
             </Row>
         </Container>
     );

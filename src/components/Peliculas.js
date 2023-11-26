@@ -45,8 +45,8 @@ function Peliculas() {
         <div className="mb-1 mt-4">
           <h2 className="text-center">Cartelera</h2>
         </div>
-        {peliculas.map((pelicula, index) => ( index < 12 &&
-          <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4 sol mb-2 mt-4" key={pelicula.id}> 
+        {peliculas.map((pelicula, index) => ( index < 8 &&
+          <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3 sol mb-2 mt-3" key={pelicula.id}> 
             <Pelicula 
               imageSource={'https://www.themoviedb.org/t/p/w440_and_h660_face' + pelicula.poster_path} 
               title={pelicula.title}
