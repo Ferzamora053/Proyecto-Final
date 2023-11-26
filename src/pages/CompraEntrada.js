@@ -6,6 +6,7 @@ import Pasos from "../components/Pasos";
 import ResumenComponents from "../components/Resumen";
 import "../CSS/compraentrada.css";
 import "../CSS/resumen.css";
+import "../CSS/custombotones.css"
 
 function CompraEntrada() {
     const { Resumen, ResumenMobile } = ResumenComponents;
@@ -21,12 +22,13 @@ function CompraEntrada() {
     const movieTitle = searchParams.get("movieTitle");
     const movieImage = searchParams.get("movieImage");
 
-    const [cantidadBoletos, setCantidadBoletos] = useState(0);
+    const [cantidadBoletos, setCantidadBoletos] = useState({
+        cantidadBoletos: 0,
+        cantidadAdulto: 0,
+        cantidadNino: 0,
+        cantidadAdultoMayor: 0,
+    });
     const [ubicacionAsientos, setUbicacionAsientos] = useState([]);
-
-    const actualizarCantidadBoletos = (cantidad) => {
-        setCantidadBoletos(cantidad);
-    };
 
     return (
         <div className="d-flex flex-column min-vh-100">
@@ -36,8 +38,10 @@ function CompraEntrada() {
                         <div className="custom-div">
                             <Pasos />
                             <ProcesoCompra 
-                                actualizarCantidadBoletos={actualizarCantidadBoletos}
+                                setCantidadBoletos={setCantidadBoletos}
+                                cantidadBoletos={cantidadBoletos}
                                 setUbicacionAsientos={setUbicacionAsientos}
+                                ubicacionAsientos={ubicacionAsientos}
                             />
                         </div>
                     </div>
@@ -58,6 +62,7 @@ function CompraEntrada() {
                     <ResumenMobile 
                         movieTitle={movieTitle}
                         horario={horario}
+                        cantidades={cantidadBoletos}
                     />
                 </div>
             </Container>
